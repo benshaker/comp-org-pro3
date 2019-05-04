@@ -160,7 +160,8 @@ def testing_bookshelf(bookshelf, wb_policy, instructions):
                     # and if it's a WT
                     # we update main memory
                     if write_thru:
-                        cache_to_mem(2**num_offset_bits)
+                        # data changed, must write word through
+                        cache_to_mem(4)
                         block['dirty'] = False
 
                 continue  # end this iteration
@@ -199,11 +200,11 @@ def testing_bookshelf(bookshelf, wb_policy, instructions):
             if write_thru:
                 # HANDLING WT
                 if read_or_write == 'read':
-                    # no change, no need to write through
+                    # no change, no need to write word through
                     pass
-                if read_or_write == 'write':
-                    # data changed, must write through
-                    cache_to_mem(2**num_offset_bits)
+                elif read_or_write == 'write':
+                    # data changed, must write word through
+                    cache_to_mem(4)
             else:
                 # HANDLING WB
                 if read_or_write == 'read':
@@ -217,10 +218,9 @@ def testing_bookshelf(bookshelf, wb_policy, instructions):
             shelf[this_index][replace_blk_w_index] = data_ob
         continue
 
-    # instructions are complete, but
-    # before we can end the program,
-    # we need to push any dirty cache
-    # objects into main memory
+    # instructions are complete, but before we can
+    # end the program, we need to push any
+    # dirty cache objects into main memory
     for each_set in shelf:
         for each_block in each_set:
             if 'dirty' in each_block and each_block['dirty'] is True:
