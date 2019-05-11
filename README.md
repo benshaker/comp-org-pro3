@@ -1,6 +1,7 @@
-## Program: Simulate.py
-## Author: Ben Shaker
-## Date: May 2019
+# Cache Simulator
+
+Author: Ben Shaker
+Date: May 2019
 
 ## Purpose
 
@@ -41,8 +42,8 @@ simulate.py allows for two optional arguments, and they are:
 1) ```--input_file (a.k.a. -fi)```
 
 some example evocations:
-```simulate.py --input_file test1.trace
-simulate.py -fi test1.trace```
+```simulate.py --input_file test1.trace```
+```simulate.py -fi test1.trace```
 
 where the input file provided is the full (i.e. file type is also necessary) filename that will be read from to gather read/write instructions. The program should error gracefully when no input file is found at the provided file location.
 
@@ -51,8 +52,8 @@ and
 2) ```--output_file (a.k.a. -fo)```
 
 some example evocations:
-```simulate.py --output_file test1.result
-simulate.py -fo test1.result```
+```simulate.py --output_file test1.result```
+```simulate.py -fo test1.result```
 
 where the output file provided is the full (i.e. file type is also necessary) filename that will store the output of the various cache simulations. The program should create the file when it does not already exist, and it should empty the file if it does already exist (so that the simulators new results are not confused with any old results).
 
