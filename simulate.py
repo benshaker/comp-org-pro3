@@ -62,6 +62,9 @@ def main(args):
                     hit_percent = hit_count / len(instructions)
                     hit_percent = round(hit_percent, 2)
 
+                    # if codename is "FA":
+                    #     print(bookshelf)
+
                     # print this output to our provided file
                     print(str(total_sz) + "\t"
                           + str(blk_sz) + "\t"
@@ -119,8 +122,12 @@ def testing_bookshelf(bookshelf, wb_policy, instructions):
 
         # prepare our working variables
         this_offset = full_address & offset_mask
+
         this_index = full_address & index_mask
+        this_index = this_index >> num_offset_bits
+
         this_tag = full_address & tag_mask
+        this_tag = this_tag >> (num_offset_bits + num_index_bits)
 
         found_or_replaced = False
         oldest_blk = (0, 0)
