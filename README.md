@@ -1,6 +1,6 @@
-# Program: Simulate.py
-# Author: Ben Shaker
-# Date: May 2019
+## Program: Simulate.py
+## Author: Ben Shaker
+## Date: May 2019
 
 ## Purpose
 
